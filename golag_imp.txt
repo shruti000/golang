@@ -1,0 +1,92 @@
+
+IMP POINTS
+*mutex provides a lock over the memory .It lockes the menory till one go routine is working and till
+ the time it is writingin the memory till that time it will not allow any other to se this memory
+*read write mutex- allows multiple go routines for reading puroses but when it comes to writing then going to 
+lock it  and the go which is reading it he will kick hi out till the write operation gets completed
+*channels are used to communicate with the go routines.data can be sent from one goroutine and received by
+ another goroutine using channels.
+* the channel can be created by uisng the chan keyword   (var channel_name chan Type)  or  (channel_name:= make(chan Type))
+    to send to the channel  ch <-5
+    to recive the channhl    <- mych
+    eg   out := make(chan int, 4)
+    eg  func square(val <-chan int) <-chan int
+    eg 
+* we can copy a slice in go using copy fucntion
+   slice1 := []int{1, 2}
+   slice2 := []int{3, 4}
+   slice3 := slice1        //we are using refernce of slice3 to fold values of sice1
+   copy(slice1, slice2)   //copying the value of slice2 into slice1
+   fmt.Println(slice1, slice2, slice3)
+
+   output ---  [3 4] [3 4] [3 4]
+* map declaration  map1:=mat[string]bool{"intervie":true,"bit":true}
+  empty map  map2:=make(map[string]bool)
+
+  copy in map
+map1 := map[string]bool{"Interview": true, "Bit": true}
+map2 := make(map[string]bool)
+for key, value := range map1 {
+	map2[key] = value
+}
+
+*Pipliens in go are basically channel are are connected to each other.In pipeline output of one channel is 
+connected to input of othere channel.Informally, a pipeline is a series of stages connected by channels, 
+where each stage is a group of goroutines running the same function.
+Each stage has any number of inbound and outbound channels, except the first and last stages, which have only 
+outbound or inbound channels, respectively. The first stage is sometimes called the source or producer; 
+the last stage, the sink or consumer.
+
+*Concurrency means an application is dealing with multiple tasks simultaneously whereas Parallelism means the 
+application is executing multiple tasks simultaneously.
+
+*select statement is basically like a switch case.use to select from one of the many channels 
+eg    select {
+	//here we are readin the ninja one and putitng it not message new parameter
+	case message := <-ninja1:
+		fmt.Println(message)
+	case message := <-ninja2:
+		fmt.Println(message)
+	}
+
+*sorting
+a := []int{3, 44, 12, 66, 32}
+	sort.Ints(a)
+	fmt.Println(a)
+it will sort inascending order 
+
+
+* encoding -  go data to json   -Marshal
+   decoding - jaosn to go data   -Unmarshal
+
+* meta data strcutre basicalu used to print srruc to json or xml in postamn
+ omiemoty is used thta we we sne d emty data it is not reflected in the postamn
+
+*Gorilla Mux -it is diffent from thr default multplexer.because in default multiplexer we cannot seperate the params
+ in the url.But using gorilla mux we can find the paraibkes from he url.It is a router .
+mux.Vars(r)-takes http requedt and returns map of segments
+
+*templates in go-it is used to customize your output
+1]html template  (html/template)
+2]text template (text/template)
+template engine -combines data with template toproduce final output
+actionas are performed when templates are passed
+  -add dynamic data 
+  - obtaiing data from struct  -{{.FieldName}}
+  --conditons if,else if,else
+       {{if .FiledName}}value of FieldNmae is {{.FieldName}}
+   - loops
+     {{range .Member}} ...{{end}}       //structure
+     {{range .}}   ...  {{end}}
+Parsing Templates
+text/template 
+-new -allocates a new undfined tmplate
+ Parse -parse the guven tempate string and return parsed tempate
+exceute - applies the data to the parse template
+
+
+INTERVIEW QUESTIONS
+1]differnce between paralleism and concurrency
+
+
+

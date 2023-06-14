@@ -1,0 +1,26 @@
+1]GORM defined a gorm.Model struct, which includes fields ID, CreatedAt, UpdatedAt, DeletedAt
+    // gorm.Model definition
+     type Model struct {
+     ID        uint           `gorm:"primaryKey"`
+     CreatedAt time.Time
+     UpdatedAt time.Time
+     DeletedAt gorm.DeletedAt `gorm:"index"`
+     }
+
+2]primaryKey	specifies column as primary key
+
+3]err=DB().ping()  -> we can use this check wether the DB is running or not
+
+4]db.Create(&structName{}) -> can we used to create a empty table
+
+5]ID unit -it autmativally creates t as a primary key with name id(gorm.Model.ID)
+
+6]db.Create(&structNam)
+
+7]db.save()  -> it wil save  the updated method in the database
+
+8]db.Debug().save() -> the debug method can be used to view the log of the statements
+
+9]db.delete(&structName)  -> it will set up a delete time in gorm.Model
+
+10]
